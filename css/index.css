@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk&family=Jersey+15&display=swap');
+
+/*
+.honk-<uniquifier> {
+    font-family: "Honk", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "MORF" 15,
+      "SHLN" 50;
+  }
+
+.jersey-15-regular {
+  font-family: "Jersey 15", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+header img
+{
+    width: 200px;
+    border-radius: 99%;
+    box-shadow: 10px 10px 15px rgb(100, 77, 1);
+}
+
+header
+{
+    text-align: center;
+    font-family: "Honk", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+    font-variation-settings:
+    "MORF" 15,
+    "SHLN" 50;  
+    color: rgb(25, 228, 255);
+}
+
+h1
+{
+    font-family: "Honk", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+    font-variation-settings:
+    "MORF" 15,
+    "SHLN" 50;    
+    color: rgb(255, 0, 0);
+    font-size: 100px;
+}
+
+h6
+{
+    font-family: "Jersey 15", serif;
+    font-weight: 400;
+    font-style: normal;    
+    text-align: center;
+    text-shadow: 10px 10px 15px rgb(30, 0, 44);
+    color: rgb(168, 247, 201);
+}
