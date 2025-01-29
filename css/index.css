@@ -30,7 +30,7 @@ header
     text-align: center;
     font-family: "Honk", serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 200;
     font-style: italic;
     font-variation-settings:
     "MORF" 15,
@@ -42,13 +42,13 @@ h1
 {
     font-family: "Honk", serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 200;
     font-style: italic;
     font-variation-settings:
     "MORF" 15,
     "SHLN" 50;    
     color: rgb(255, 0, 0);
-    font-size: 100px;
+    font-size: 50px;
 }
 
 h6
