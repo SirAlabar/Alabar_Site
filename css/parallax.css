@@ -1,0 +1,59 @@
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #000;
+}
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 200vh;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ajustado para evitar borda visível */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+/* Camadas do parallax */
+#background { z-index: 1; background-image: var(--bg-image); background-attachment: fixed; }
+#mountain { z-index: 2; background-image: var(--mountain-image); }
+#clouds   { z-index: 3; background-image: var(--clouds-image); }
+#field1   { z-index: 4; background-image: var(--field6-image); }
+#field2   { z-index: 5; background-image: var(--field5-image); }
+#field3   { z-index: 6; background-image: var(--field4-image); }
+#field4   { z-index: 7; background-image: var(--field3-image); }
+#field5   { z-index: 8; background-image: var(--field2-image); }
+#field6   { z-index: 9; background-image: var(--field1-image); }
+#castle   { z-index: 10; background-image: var(--castle-image); }
+
+/* Ajuste para evitar a borda visível */
+.layer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background: inherit;
+    background-size: cover;
+    background-position: center;
+}
