@@ -34,16 +34,16 @@ html, body {
 }
 
 /* Camadas do parallax */
-#background { z-index: 1; background-image: var(--bg-image); background-attachment: fixed; }
-#mountain { z-index: 2; background-image: var(--mountain-image); }
-#clouds   { z-index: 3; background-image: var(--clouds-image); }
-#field1   { z-index: 4; background-image: var(--field6-image); }
-#field2   { z-index: 5; background-image: var(--field5-image); }
-#field3   { z-index: 6; background-image: var(--field4-image); }
-#field4   { z-index: 7; background-image: var(--field3-image); }
-#field5   { z-index: 8; background-image: var(--field2-image); }
-#field6   { z-index: 9; background-image: var(--field1-image); }
-#castle   { z-index: 10; background-image: var(--castle-image); }
+#background { z-index: -10; background-image: var(--bg-image); background-attachment: fixed; }
+#mountain { z-index: -9; background-image: var(--mountain-image); }
+#clouds   { z-index: -8; background-image: var(--clouds-image); }
+#field1   { z-index: -7; background-image: var(--field6-image); }
+#field2   { z-index: -6; background-image: var(--field5-image); }
+#field3   { z-index: -5; background-image: var(--field4-image); }
+#field4   { z-index: -4; background-image: var(--field3-image); }
+#field5   { z-index: -3; background-image: var(--field2-image); }
+#field6   { z-index: -2; background-image: var(--field1-image); }
+#castle   { z-index: -1; background-image: var(--castle-image); }
 
 /* Ajuste para evitar a borda visível */
 .layer::before {
@@ -56,4 +56,11 @@ html, body {
     background: inherit;
     background-size: cover;
     background-position: center;
+}
+
+.header{
+    width: 100vw;
+    z-index: 100;
+    top: 0;
+    position: absolute;
 }
