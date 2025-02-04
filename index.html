@@ -16,23 +16,56 @@
     </head>
     <body>
         <!--<div class="theme-toggle">🌓</div>-->
-        <header class="header">
-            <div class="row">
-                <div class="col-sm-12 col-md-2">
-                    <img src="./img/Avatar_Profile_64px.gif" alt="logotipo alabar">
+        <header class="header fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                <div class="container-fluid">
+                    <div class="row w-100 align-items-center">
+                        <div class="col-md-2">
+                            <img src="./img/Avatar_Profile_64px.gif" alt="logotipo alabar" class="header-logo">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                                <ul class="navbar-nav mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./html/sobre.html">Sobre</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./html/historia.html">História</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./html/contatos.html">Contatos</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Projetos
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Web</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#">Mobile</a></li>
+                                            <li><a class="dropdown-item" href="#">Games</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                            <a href="https://github.com/" target="_blank">
+                                <img src="./img/github_logo.png" alt="Github" class="redes-sociais">
+                            </a>
+                            <a href="https://linkedin.com/" target="_blank">
+                                <img src="./img/linkedin_logo.png" alt="LinkedIn" class="redes-sociais">
+                            </a>
+                            <button id="theme-toggle" class="theme-toggle">🌓</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-12 col-md-8">
-                    <h1>
-                        Dev Site
-                    </h1>
-                </div>
-                <div class="col-sm-12 col-md-2">
-                    <h3>
-                        <button id="theme-toggle" class="theme-toggle">🌓</button>
-                    </h3>
-                </div>
-            </div>
+            </nav>
         </header>
+        
         <div class="scene">
             <div class="layer" id="background" data-speed="0.0"></div>
             <div class="layer" id="mountain" data-speed="0.0"></div>            
