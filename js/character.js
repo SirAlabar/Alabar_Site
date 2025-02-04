@@ -26,16 +26,44 @@ class Character {
         const charWidth = 64 * this.scale;
         const charHeight = 64 * this.scale;
         
-        this.bounds = {
-            left: charWidth/2,
-            right: document.querySelector('.movement-area').clientWidth - charWidth,
-            top: 0,
-            bottom: document.querySelector('.movement-area').clientHeight - charHeight
-        };
+        this.updateBounds();
+        
+        window.addEventListener('resize', () => {
+            this.updateBounds();
+            this.adjustPosition();
+        });
+        
         
         this.setupControls();
         this.gameLoop();
         this.updatePosition();
+    }
+
+    updateBounds() {
+        const charWidth = 64 * this.scale;
+        const charHeight = 64 * this.scale;
+        const movementArea = document.querySelector('.movement-area');
+        
+        this.bounds = {
+            left: charWidth/2,
+            right: movementArea.clientWidth - charWidth,
+            top: 0,
+            bottom: movementArea.clientHeight - charHeight
+        };
+    }
+
+    adjustPosition() {
+
+        this.position.x = Math.max(this.bounds.left, Math.min(this.position.x, this.bounds.right));
+        this.position.y = Math.max(this.bounds.top, Math.min(this.position.y, this.bounds.bottom));
+        this.updatePosition();
+    }
+
+
+    getResponsiveScale() {
+        if (window.innerWidth <= 480) return 1.5;
+        if (window.innerWidth <= 768) return 1.75;
+        return 2;
     }
 
     updateAnimation() {
@@ -46,7 +74,6 @@ class Character {
 
         this.isMoving = Object.values(this.keys).some(key => key);
 
-        // Checando tanto setas quanto WASD
         if (this.keys.ArrowUp || this.keys.w || this.keys.W) this.direction = 'up';
         if (this.keys.ArrowDown || this.keys.s || this.keys.S) this.direction = 'down';
         if (this.keys.ArrowLeft || this.keys.a || this.keys.A) this.direction = 'left';
@@ -60,7 +87,7 @@ class Character {
         let newX = this.position.x;
         let newY = this.position.y;
 
-        // Checando tanto setas quanto WASD
+
         if (this.keys.ArrowLeft || this.keys.a || this.keys.A) newX -= this.speed;
         if (this.keys.ArrowRight || this.keys.d || this.keys.D) newX += this.speed;
         if (this.keys.ArrowUp || this.keys.w || this.keys.W) newY -= this.speed;
@@ -69,6 +96,7 @@ class Character {
         this.position.x = Math.max(this.bounds.left, Math.min(newX, this.bounds.right));
         this.position.y = Math.max(this.bounds.top, Math.min(newY, this.bounds.bottom));
 
+        this.scale = this.getResponsiveScale();
         this.element.style.transform = `translate(${this.position.x}px, ${this.position.y}px) scale(${this.scale})`;
     }
 

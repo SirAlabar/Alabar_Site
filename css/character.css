@@ -22,6 +22,22 @@
     background-repeat: no-repeat;
 }
 
+@media (max-width: 480px) {
+    .movement-area {
+        left: -5%;
+        width: 110%;
+        height: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .movement-area {
+        left: -10%;
+        width: 120%;
+        height: 40%;
+    }
+}
+
 /* Estados parados */
 .idle-down { background-image: url('../img/player/Little_Knight_Leo_front0.png'); }
 .idle-up { background-image: url('../img/player/Little_Knight_Leo_back0.png'); }
