@@ -36,8 +36,8 @@ h1 {
     padding: 5px;
     border-radius: 50%;
     transition: background-color 0.3s;
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
 }
 
 .redes-sociais:hover {
@@ -53,7 +53,7 @@ h1 {
     background-color: rgba(81, 81, 81, 0.2);
     border-radius: 10px;
     text-align: center;
-    font-size: 24px;
+    font-size: 38px;
     position: relative;
     border: 1px solid transparent;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
@@ -79,7 +79,7 @@ h1 {
 .dropdown-item {
     color: white;
     font-family: "Honk", serif;
-    font-size: 24px;
+    font-size: 36px;
     transition: all 0.3s ease;
     border-radius: 8px;
     padding: 5px 15px;

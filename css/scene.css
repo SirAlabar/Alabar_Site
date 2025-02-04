@@ -16,7 +16,7 @@ html, body {
     position: relative;
     width: 100vw;
     height: 200vh;
-    overflow: hidden;
+    overflow: visible;
     transform-style: preserve-3d;
 }
 
