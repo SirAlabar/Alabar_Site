@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="./css/scene.css">
         <link rel="stylesheet" href="./css/theme.css">
         <link rel="stylesheet" href="./css/character.css">
+        <link rel="stylesheet" href="./css/game_card.css">
     </head>
     <body>
         <!--<div class="theme-toggle">🌓</div>-->
@@ -81,8 +82,45 @@
             <div class="movement-area">
                 <div id="character" class="character idle-down"></div>
             </div>
+
+                <!-- Card -->
+            <div class="container-fluid">
+                <div class="row justify-content-end">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="game-card card">
+                            <h2 id="gameTitle" class="game-title card-header">Game 1</h2>
+                            <div class="card-body">
+                                <div class="game-preview">
+                                    <img id="gameImage" src="./img/game1.gif" alt="Game Preview" class="card-img">
+                                </div>
+                                <p id="gameDescription" class="game-description card-text">
+                                    Uma aventura épica em WebAssembly
+                                </p>
+                                
+                                <div id="gameProgress">
+                                    <!-- JavaScript -->
+                                </div>
+                                
+                                <div class="game-buttons">
+                                    <button class="game-select-btn active" onclick="selectGame(0)">
+                                        <i class="fas fa-gamepad"></i>
+                                    </button>
+                                    <button class="game-select-btn" onclick="selectGame(1)">
+                                        <i class="fas fa-puzzle-piece"></i>
+                                    </button>
+                                    <button class="game-select-btn" onclick="selectGame(2)">
+                                        <i class="fas fa-sword"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
+
+       
+
         <h6>
         <!-- Conteúdo de teste -->
         <div style="height: 50px;">
@@ -95,6 +133,7 @@
         <script src="./js/parallax.js"></script>
         <script src="./js/theme.js"></script>
         <script src="./js/character.js"></script>
+        <script src="./js/game_card.js"></script>
 
     </body>
 </html>
