@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Honk&family=Jersey+15&display=swap');
 
+::-webkit-scrollbar {
+    display: none;
+  }
+  
 /* Navbar */
 .navbar {
     background-color: rgba(33, 37, 41, 0.2) !important;

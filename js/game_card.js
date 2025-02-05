@@ -1,7 +1,7 @@
 const games = [
     {
         title: "Game 1",
-        description: "Uma aventura épica em WebAssembly",
+        description: "so_long 42 Porto",
         image: "./img/game1.gif",
         progress: 100,
         icon: "gamepad",
@@ -9,14 +9,14 @@ const games = [
     },
     {
         title: "Game 2",
-        description: "Puzzle game intrigante",
+        description: "Minecrap",
         image: "./img/game2.gif",
         progress: 30,
         icon: "puzzle-piece"
     },
     {
         title: "Game 3",
-        description: "RPG estratégico",
+        description: "Snake",
         image: "./img/game3.gif",
         progress: 15,
         icon: "sword"
