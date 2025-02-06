@@ -5,9 +5,8 @@ class Character {
         this.speed = 3;
         this.direction = 'down';
         this.isMoving = false;
-        this.scale = 2;
+        this.scale = 1;
         
-        // Adicionando suporte para WASD
         this.keys = {
             ArrowUp: false,
             ArrowDown: false,
@@ -23,9 +22,6 @@ class Character {
             D: false
         };
         
-        const charWidth = 64 * this.scale;
-        const charHeight = 64 * this.scale;
-        
         this.updateBounds();
         
         window.addEventListener('resize', () => {
@@ -33,19 +29,18 @@ class Character {
             this.adjustPosition();
         });
         
-        
         this.setupControls();
         this.gameLoop();
         this.updatePosition();
     }
 
     updateBounds() {
-        const charWidth = 64 * this.scale;
-        const charHeight = 64 * this.scale;
+        const charWidth = 128 * this.scale;
+        const charHeight = 128 * this.scale;
         const movementArea = document.querySelector('.movement-area');
         
         this.bounds = {
-            left: charWidth/2,
+            left: charWidth / 2,
             right: movementArea.clientWidth - charWidth,
             top: 0,
             bottom: movementArea.clientHeight - charHeight
@@ -53,12 +48,10 @@ class Character {
     }
 
     adjustPosition() {
-
         this.position.x = Math.max(this.bounds.left, Math.min(this.position.x, this.bounds.right));
         this.position.y = Math.max(this.bounds.top, Math.min(this.position.y, this.bounds.bottom));
         this.updatePosition();
     }
-
 
     getResponsiveScale() {
         if (window.innerWidth <= 480) return 1.5;
@@ -71,22 +64,22 @@ class Character {
             'idle-up', 'idle-down', 'idle-left', 'idle-right',
             'walk-up', 'walk-down', 'walk-left', 'walk-right'
         );
-
+    
         this.isMoving = Object.values(this.keys).some(key => key);
-
-        if (this.keys.ArrowUp || this.keys.w || this.keys.W) this.direction = 'up';
+    
         if (this.keys.ArrowDown || this.keys.s || this.keys.S) this.direction = 'down';
         if (this.keys.ArrowLeft || this.keys.a || this.keys.A) this.direction = 'left';
         if (this.keys.ArrowRight || this.keys.d || this.keys.D) this.direction = 'right';
-
+        if (this.keys.ArrowUp || this.keys.w || this.keys.W) this.direction = 'up';
+    
         const animationClass = this.isMoving ? 'walk-' : 'idle-';
         this.element.classList.add(animationClass + this.direction);
     }
+    
 
     updatePosition() {
         let newX = this.position.x;
         let newY = this.position.y;
-
 
         if (this.keys.ArrowLeft || this.keys.a || this.keys.A) newX -= this.speed;
         if (this.keys.ArrowRight || this.keys.d || this.keys.D) newX += this.speed;

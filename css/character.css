@@ -10,16 +10,17 @@
 
 .character {
     position: absolute;
-    width: 64px;
-    height: 64px;
+    width: 128px;
+    height: 128px;
     left: 20%;
     bottom: 0;
     transform-origin: bottom center;
     image-rendering: pixelated;
     z-index: 101;
     pointer-events: none;
-    background-size: contain;
+    background-size: 768px 512px;
     background-repeat: no-repeat;
+    background-image: url("../img/player/Little_Leo.png");
 }
 
 @media (max-width: 480px) {
@@ -37,48 +38,52 @@
         height: 40%;
     }
 }
-
 /* Estados parados */
-.idle-down { background-image: url('../img/player/Little_Knight_Leo_front0.png'); }
-.idle-up { background-image: url('../img/player/Little_Knight_Leo_back0.png'); }
-.idle-left { background-image: url('../img/player/Little_Knight_Leo_left0.png'); }
-.idle-right { background-image: url('../img/player/Little_Knight_Leo_right0.png'); }
+.idle-down  { background-position: 0px 0px; }               /* Primeira linha */
+.idle-left  { background-position: 0px -128px; }           /* Segunda linha */
+.idle-right { background-position: 0px -256px; }           /* Terceira linha */
+.idle-up    { background-position: 0px -384px; }           /* Quarta linha */
 
 /* Animações de movimento */
 @keyframes walkDown {
-    0% { background-image: url('../img/player/Little_Knight_Leo_front0.png'); }
-    25% { background-image: url('../img/player/Little_Knight_Leo_front1.png'); }
-    50% { background-image: url('../img/player/Little_Knight_Leo_front2.png'); }
-    75% { background-image: url('../img/player/Little_Knight_Leo_front3.png'); }
-    100% { background-image: url('../img/player/Little_Knight_Leo_front0.png'); }
-}
-
-@keyframes walkUp {
-    0% { background-image: url('../img/player/Little_Knight_Leo_back0.png'); }
-    25% { background-image: url('../img/player/Little_Knight_Leo_back1.png'); }
-    50% { background-image: url('../img/player/Little_Knight_Leo_back2.png'); }
-    75% { background-image: url('../img/player/Little_Knight_Leo_back3.png'); }
-    100% { background-image: url('../img/player/Little_Knight_Leo_back0.png'); }
+    0% { background-position: 0px 0px; }
+    20% { background-position: -128px 0px; }
+    40% { background-position: -256px 0px; }
+    60% { background-position: -384px 0px; }
+    80% { background-position: -512px 0px; }
+    100% { background-position: -640px 0px; }
 }
 
 @keyframes walkLeft {
-    0% { background-image: url('../img/player/Little_Knight_Leo_left0.png'); }
-    25% { background-image: url('../img/player/Little_Knight_Leo_left1.png'); }
-    50% { background-image: url('../img/player/Little_Knight_Leo_left2.png'); }
-    75% { background-image: url('../img/player/Little_Knight_Leo_left3.png'); }
-    100% { background-image: url('../img/player/Little_Knight_Leo_left0.png'); }
+    0% { background-position: 0px -128px; }
+    20% { background-position: -128px -128px; }
+    40% { background-position: -256px -128px; }
+    60% { background-position: -384px -128px; }
+    80% { background-position: -512px -128px; }
+    100% { background-position: -640px -128px; }
 }
 
 @keyframes walkRight {
-    0% { background-image: url('../img/player/Little_Knight_Leo_right0.png'); }
-    25% { background-image: url('../img/player/Little_Knight_Leo_right1.png'); }
-    50% { background-image: url('../img/player/Little_Knight_Leo_right2.png'); }
-    75% { background-image: url('../img/player/Little_Knight_Leo_right3.png'); }
-    100% { background-image: url('../img/player/Little_Knight_Leo_right0.png'); }
+    0% { background-position: 0px -256px; }
+    20% { background-position: -128px -256px; }
+    40% { background-position: -256px -256px; }
+    60% { background-position: -384px -256px; }
+    80% { background-position: -512px -256px; }
+    100% { background-position: -640px -256px; }
 }
 
-/* Classes de animação */
-.walk-down { animation: walkDown 0.8s steps(4) infinite; }
-.walk-up { animation: walkUp 0.8s steps(4) infinite; }
-.walk-left { animation: walkLeft 0.8s steps(4) infinite; }
-.walk-right { animation: walkRight 0.8s steps(4) infinite; }
+@keyframes walkUp {
+    0% { background-position: 0px -384px; }
+    20% { background-position: -128px -384px; }
+    40% { background-position: -256px -384px; }
+    60% { background-position: -384px -384px; }
+    80% { background-position: -512px -384px; }
+    100% { background-position: -640px -384px; }
+}
+
+/* Aplicar as animações */
+.walk-down  { animation: walkDown 0.8s steps(6, end) infinite; }
+.walk-left  { animation: walkLeft 0.8s steps(6, end) infinite; }
+.walk-right { animation: walkRight 0.8s steps(6, end) infinite; }
+.walk-up    { animation: walkUp 0.8s steps(6, end) infinite; }
+
