@@ -44,46 +44,47 @@
 .idle-right { background-position: 0px -256px; }           /* Terceira linha */
 .idle-up    { background-position: 0px -384px; }           /* Quarta linha */
 
-/* Animações de movimento */
 @keyframes walkDown {
-    0% { background-position: 0px 0px; }
-    20% { background-position: -128px 0px; }
-    40% { background-position: -256px 0px; }
-    60% { background-position: -384px 0px; }
-    80% { background-position: -512px 0px; }
-    100% { background-position: -640px 0px; }
+    from {
+        background-position: 0px 0px; /* Primeira linha */
+    }
+    to {
+        background-position: -640px 0px; /* Último quadro da primeira linha */
+    }
 }
 
+/* Caminhada para a esquerda */
 @keyframes walkLeft {
-    0% { background-position: 0px -128px; }
-    20% { background-position: -128px -128px; }
-    40% { background-position: -256px -128px; }
-    60% { background-position: -384px -128px; }
-    80% { background-position: -512px -128px; }
-    100% { background-position: -640px -128px; }
+    from {
+        background-position: 0px -128px; /* Primeira linha (linha 2) */
+    }
+    to {
+        background-position: -640px -128px; /* Último quadro da segunda linha */
+    }
 }
 
+/* Caminhada para a direita */
 @keyframes walkRight {
-    0% { background-position: 0px -256px; }
-    20% { background-position: -128px -256px; }
-    40% { background-position: -256px -256px; }
-    60% { background-position: -384px -256px; }
-    80% { background-position: -512px -256px; }
-    100% { background-position: -640px -256px; }
+    from {
+        background-position: 0px -256px; /* Primeira linha (linha 3) */
+    }
+    to {
+        background-position: -640px -256px; /* Último quadro da terceira linha */
+    }
 }
 
+/* Caminhada para cima */
 @keyframes walkUp {
-    0% { background-position: 0px -384px; }
-    20% { background-position: -128px -384px; }
-    40% { background-position: -256px -384px; }
-    60% { background-position: -384px -384px; }
-    80% { background-position: -512px -384px; }
-    100% { background-position: -640px -384px; }
+    from {
+        background-position: 0px -384px; /* Primeira linha (linha 4) */
+    }
+    to {
+        background-position: -640px -384px; /* Último quadro da quarta linha */
+    }
 }
 
-/* Aplicar as animações */
-.walk-down  { animation: walkDown 0.8s steps(6, end) infinite; }
-.walk-left  { animation: walkLeft 0.8s steps(6, end) infinite; }
-.walk-right { animation: walkRight 0.8s steps(6, end) infinite; }
-.walk-up    { animation: walkUp 0.8s steps(6, end) infinite; }
-
+/* Aplicar as animações de movimento */
+.walk-down  { animation: walkDown 0.8s steps(6, jump-none) infinite; }
+.walk-left  { animation: walkLeft 0.8s steps(6, jump-none) infinite; }
+.walk-right { animation: walkRight 0.8s steps(6, jump-none) infinite; }
+.walk-up    { animation: walkUp 0.8s steps(6, jump-none) infinite; }
