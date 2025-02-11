@@ -26,7 +26,7 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Ajustado para evitar borda visível */
+    width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
@@ -35,7 +35,6 @@ html, body {
     will-change: transform;
 }
 
-/* Camadas do parallax */
 #background { z-index: -10; background-image: var(--bg-image); background-attachment: fixed; }
 #mountain { z-index: -9; background-image: var(--mountain-image); }
 #clouds   { z-index: -8; background-image: var(--clouds-image); }
@@ -47,7 +46,7 @@ html, body {
 #field6   { z-index: -2; background-image: var(--field1-image); }
 #castle   { z-index: -1; background-image: var(--castle-image); }
 
-/* Ajuste para evitar a borda visível */
+
 .layer::before {
     content: "";
     position: absolute;

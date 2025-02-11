@@ -12,7 +12,6 @@
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Dark theme overrides */
 body[data-theme="dark"] header {
     color: rgb(0, 183, 255);
 }
@@ -27,7 +26,6 @@ body[data-theme="dark"] h6 {
 
 
 :root {
-    /* Imagens do modo claro */
     --bg-light: url('../img/light/background.png');
     --mountain-light: url('../img/light/mountain.png');
     --clouds-light: url('../img/light/clouds.png');
@@ -39,7 +37,6 @@ body[data-theme="dark"] h6 {
     --field5-light: url('../img/light/field5.png');
     --field6-light: url('../img/light/field6.png');
 
-    /* Imagens do modo escuro */
     --bg-dark: url('../img/dark/background_night.png');
     --mountain-dark: url('../img/dark/mountain_night.png');
     --clouds-dark: url('../img/dark/clouds_night.png');
@@ -52,7 +49,6 @@ body[data-theme="dark"] h6 {
     --field6-dark: url('../img/dark/field6_night.png');
 }
 
-/* Tema claro (padrão) */
 body {
     --bg-image: var(--bg-light);
     --mountain-image: var(--mountain-light);
@@ -66,7 +62,6 @@ body {
     --field6-image: var(--field6-light);
 }
 
-/* Tema escuro */
 body[data-theme="dark"] {
     --bg-image: var(--bg-dark);
     --mountain-image: var(--mountain-dark);

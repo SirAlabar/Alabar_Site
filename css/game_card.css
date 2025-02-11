@@ -141,7 +141,6 @@
     box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
 }
 
-/* Scrollbar personalizado */
 .game-card::-webkit-scrollbar {
     width: 6px;
 }
@@ -155,7 +154,6 @@
     border-radius: 3px;
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
     .game-card-container {
         position: relative;

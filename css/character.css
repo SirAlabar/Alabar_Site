@@ -32,7 +32,7 @@
 }
 
 .attacking {
-    background-image: url("../img/player/Little_Leo2.png");
+    background-image: url("../img/player/Sword_attack_full.png");
 }
 
 @media (max-width: 480px) {
@@ -75,18 +75,10 @@
     100% { background-position: -384px -384px; }
 }
 
-.idle-down  { 
-    animation: idleDown 5s steps(12, jump-none) infinite;
-}
-.idle-left  { 
-    animation: idleLeft 5s steps(12, jump-none) infinite;
-}
-.idle-right { 
-    animation: idleRight 5s steps(12, jump-none) infinite;
-}
-.idle-up    { 
-    animation: idleUp 5s steps(4, jump-none) infinite;
-}
+.idle-down  {animation: idleDown 5s steps(12, jump-none) infinite;}
+.idle-left  {animation: idleLeft 5s steps(12, jump-none) infinite;}
+.idle-right {animation: idleRight 5s steps(12, jump-none) infinite;}
+.idle-up    {animation: idleUp 5s steps(4, jump-none) infinite;}
 
 .idle-down, .idle-left, .idle-right, .idle-up {
     animation-fill-mode: both;
@@ -132,3 +124,45 @@
 .walk-left  { animation: walkLeft 0.8s steps(6, jump-none) infinite; }
 .walk-right { animation: walkRight 0.8s steps(6, jump-none) infinite; }
 .walk-up    { animation: walkUp 0.8s steps(6, jump-none) infinite; }
+
+
+@keyframes attackDown {
+    from {
+        background-position: 0px 0px;
+    }
+    to {
+        background-position: -896px 0px;
+    }
+}
+
+@keyframes attackLeft {
+    from {
+        background-position: 0px -128px;
+    }
+    to {
+        background-position: -896px -128px;
+    }
+}
+
+@keyframes attackRight {
+    from {
+        background-position: 0px -256px;
+    }
+    to {
+        background-position: -896px -256px;
+    }
+}
+
+@keyframes attackUp {
+    from {
+        background-position: 0px -384px;
+    }
+    to {
+        background-position: -896px -384px;
+    }
+}
+
+.attacking.attack-down {animation: attackDown 0.8s steps(8, jump-none) infinite;}
+.attacking.attack-left {animation: attackLeft 0.8s steps(8, jump-none) infinite;}
+.attacking.attack-right {animation: attackRight 0.8s steps(8, jump-none) infinite;}
+.attacking.attack-up {animation: attackUp 0.8s steps(8, jump-none) infinite;}

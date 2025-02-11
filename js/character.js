@@ -6,6 +6,7 @@ class Character {
         this.direction = 'down';
         this.isMoving = false;
         this.scale = 1;
+        this.isAttacking = false;
         
         this.keys = {
             ArrowUp: false,
@@ -41,6 +42,21 @@ class Character {
         this.element.classList.add('idle', 'idle-down');
     }
 
+    handleAttack() {
+        if (!this.isAttacking) {
+            this.isAttacking = true;
+            this.element.classList.remove('idle', 'walking');
+            this.element.classList.add('attacking');
+            this.element.classList.add('attack-' + this.direction);
+
+            setTimeout(() => {
+                this.isAttacking = false;
+                this.element.classList.remove('attacking', 'attack-' + this.direction);
+                this.updateAnimation();
+            }, 500);
+        }
+    }
+
     updateBounds() {
         const charWidth = 128 * this.scale;
         const charHeight = 128 * this.scale;
@@ -67,9 +83,12 @@ class Character {
     }
 
     updateAnimation() {
+        if (this.isAttacking) return;
+
         this.element.classList.remove(
             'idle-up', 'idle-down', 'idle-left', 'idle-right',
-            'walk-up', 'walk-down', 'walk-left', 'walk-right'
+            'walk-up', 'walk-down', 'walk-left', 'walk-right',
+            'attack-up', 'attack-down', 'attack-left', 'attack-right'
         );
     
         this.isMoving = Object.entries(this.keys).some(([key, value]) => 
@@ -81,7 +100,7 @@ class Character {
         if (this.keys.ArrowRight || this.keys.d || this.keys.D) this.direction = 'right';
         if (this.keys.ArrowUp || this.keys.w || this.keys.W) this.direction = 'up';
     
-        this.element.classList.remove('idle', 'walking');
+        this.element.classList.remove('idle', 'walking', 'attacking');
 
         if (this.isMoving) {
             this.element.classList.add('walking');
@@ -93,6 +112,8 @@ class Character {
     }
 
     updatePosition() {
+        if (this.isAttacking) return;
+
         let newX = this.position.x;
         let newY = this.position.y;
 
@@ -112,7 +133,11 @@ class Character {
         document.addEventListener('keydown', (e) => {
             if (this.keys.hasOwnProperty(e.key)) {
                 this.keys[e.key] = true;
-                this.updateAnimation();
+                if (e.key === 'e' || e.key === 'E') {
+                    this.handleAttack();
+                } else {
+                    this.updateAnimation();
+                }
             }
         });
 
@@ -125,7 +150,7 @@ class Character {
     }
 
     gameLoop() {
-        if (this.isMoving) {
+        if (this.isMoving && !this.isAttacking) {
             this.updatePosition();
         }
         requestAnimationFrame(() => this.gameLoop());
