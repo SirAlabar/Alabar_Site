@@ -18,9 +18,21 @@
     image-rendering: pixelated;
     z-index: 101;
     pointer-events: none;
-    background-size: 768px 512px;
     background-repeat: no-repeat;
+}
+
+.idle {
+    background-size: 1536px 512px;
+    background-image: url("../img/player/Little_Leo_Idle.png");
+}
+
+.walking {
+    background-size: 768px 512px;
     background-image: url("../img/player/Little_Leo.png");
+}
+
+.attacking {
+    background-image: url("../img/player/Little_Leo2.png");
 }
 
 @media (max-width: 480px) {
@@ -38,52 +50,84 @@
         height: 40%;
     }
 }
-/* Estados parados */
-.idle-down  { background-position: 0px 0px; }               /* Primeira linha */
-.idle-left  { background-position: 0px -128px; }           /* Segunda linha */
-.idle-right { background-position: 0px -256px; }           /* Terceira linha */
-.idle-up    { background-position: 0px -384px; }           /* Quarta linha */
+
+@keyframes idleDown {
+    0% { background-position: 0px 0px; }
+    60% { background-position: 0px 0px; }
+    100% { background-position: -1408px 0px; }
+}
+
+@keyframes idleLeft {
+    0% { background-position: 0px -128px; }
+    60% { background-position: 0px -128px; }
+    100% { background-position: -1408px -128px; }
+}
+
+@keyframes idleRight {
+    0% { background-position: 0px -256px; }
+    60% { background-position: 0px -256px; }
+    100% { background-position: -1408px -256px; }
+}
+
+@keyframes idleUp {
+    0% { background-position: 0px -384px; }
+    60% { background-position: 0px -384px; }
+    100% { background-position: -384px -384px; }
+}
+
+.idle-down  { 
+    animation: idleDown 5s steps(12, jump-none) infinite;
+}
+.idle-left  { 
+    animation: idleLeft 5s steps(12, jump-none) infinite;
+}
+.idle-right { 
+    animation: idleRight 5s steps(12, jump-none) infinite;
+}
+.idle-up    { 
+    animation: idleUp 5s steps(4, jump-none) infinite;
+}
+
+.idle-down, .idle-left, .idle-right, .idle-up {
+    animation-fill-mode: both;
+}
 
 @keyframes walkDown {
     from {
-        background-position: 0px 0px; /* Primeira linha */
+        background-position: 0px 0px;
     }
     to {
-        background-position: -640px 0px; /* Último quadro da primeira linha */
+        background-position: -640px 0px;
     }
 }
 
-/* Caminhada para a esquerda */
 @keyframes walkLeft {
     from {
-        background-position: 0px -128px; /* Primeira linha (linha 2) */
+        background-position: 0px -128px;
     }
     to {
-        background-position: -640px -128px; /* Último quadro da segunda linha */
+        background-position: -640px -128px;
     }
 }
 
-/* Caminhada para a direita */
 @keyframes walkRight {
     from {
-        background-position: 0px -256px; /* Primeira linha (linha 3) */
+        background-position: 0px -256px;
     }
     to {
-        background-position: -640px -256px; /* Último quadro da terceira linha */
+        background-position: -640px -256px;
     }
 }
 
-/* Caminhada para cima */
 @keyframes walkUp {
     from {
-        background-position: 0px -384px; /* Primeira linha (linha 4) */
+        background-position: 0px -384px;
     }
     to {
-        background-position: -640px -384px; /* Último quadro da quarta linha */
+        background-position: -640px -384px;
     }
 }
 
-/* Aplicar as animações de movimento */
 .walk-down  { animation: walkDown 0.8s steps(6, jump-none) infinite; }
 .walk-left  { animation: walkLeft 0.8s steps(6, jump-none) infinite; }
 .walk-right { animation: walkRight 0.8s steps(6, jump-none) infinite; }

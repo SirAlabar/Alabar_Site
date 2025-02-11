@@ -19,7 +19,9 @@ class Character {
             W: false,
             S: false,
             A: false,
-            D: false
+            D: false,
+            e: false,
+            E: false
         };
         
         this.updateBounds();
@@ -32,6 +34,11 @@ class Character {
         this.setupControls();
         this.gameLoop();
         this.updatePosition();
+        this.setInitialState();
+    }
+
+    setInitialState() {
+        this.element.classList.add('idle', 'idle-down');
     }
 
     updateBounds() {
@@ -65,17 +72,25 @@ class Character {
             'walk-up', 'walk-down', 'walk-left', 'walk-right'
         );
     
-        this.isMoving = Object.values(this.keys).some(key => key);
+        this.isMoving = Object.entries(this.keys).some(([key, value]) => 
+            key !== 'e' && key !== 'E' && value === true
+        );
     
         if (this.keys.ArrowDown || this.keys.s || this.keys.S) this.direction = 'down';
         if (this.keys.ArrowLeft || this.keys.a || this.keys.A) this.direction = 'left';
         if (this.keys.ArrowRight || this.keys.d || this.keys.D) this.direction = 'right';
         if (this.keys.ArrowUp || this.keys.w || this.keys.W) this.direction = 'up';
     
-        const animationClass = this.isMoving ? 'walk-' : 'idle-';
-        this.element.classList.add(animationClass + this.direction);
+        this.element.classList.remove('idle', 'walking');
+
+        if (this.isMoving) {
+            this.element.classList.add('walking');
+            this.element.classList.add('walk-' + this.direction);
+        } else {
+            this.element.classList.add('idle');
+            this.element.classList.add('idle-' + this.direction);
+        }
     }
-    
 
     updatePosition() {
         let newX = this.position.x;
