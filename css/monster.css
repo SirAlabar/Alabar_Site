@@ -44,22 +44,22 @@
 
 @keyframes monsterWalkDown {
     from { background-position: 0px 0px; }
-    to { background-position: -512px 0px; }
+    to { background-position: -448px 0px; }
 }
 
 @keyframes monsterWalkLeft {
     from { background-position: 0px -64px; }
-    to { background-position: -512px -64px; }
+    to { background-position: -448px -64px; }
 }
 
 @keyframes monsterWalkRight {
     from { background-position: 0px -128px; }
-    to { background-position: -512px -128px; }
+    to { background-position: -448px -128px; }
 }
 
 @keyframes monsterWalkUp {
     from { background-position: 0px -192px; }
-    to { background-position: -512px -192px; }
+    to { background-position: -448px -192px; }
 }
 
 @keyframes monsterHurtDown {

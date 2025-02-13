@@ -79,3 +79,20 @@ function selectGame(index) {
         }, 50);
     }, 300);
 }
+
+function toggleCard() {
+    const toggleBtn = document.querySelector('.toggle-card-btn');
+    const cardContainer = document.querySelector('.container-fluid.game-container');
+    
+    toggleBtn.classList.toggle('active');
+    cardContainer.classList.toggle('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const scene = document.querySelector('.scene');
+    const toggleBtn = document.createElement('div');
+    toggleBtn.className = 'toggle-card-btn';
+    toggleBtn.innerHTML = '⇨';
+    toggleBtn.addEventListener('click', toggleCard);
+    scene.appendChild(toggleBtn);
+});
