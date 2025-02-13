@@ -2,13 +2,14 @@ class Slime {
     constructor(id, startX, startY) {
         this.element = document.createElement('div');
         this.element.id = `slime-${id}`;
-        this.element.className = 'monster idle';
+        this.element.className = 'monster idle idle-down';
         document.querySelector('.movement-area').appendChild(this.element);
-
+        
         this.position = { x: startX, y: startY };
         this.speed = 1.5;
         this.isMoving = false;
-        this.scale = 1;
+        this.scale = 3;
+        this.direction = 'down';
         this.currentState = 'idle';
         this.health = 100;
         this.isDead = false;
@@ -26,7 +27,6 @@ class Slime {
 
     setState(newState) {
         this.element.classList.remove('idle', 'walking', 'hurt', 'dying', 'attacking');
-        
         this.element.classList.add(newState);
         this.currentState = newState;
     }
@@ -52,7 +52,6 @@ class Slime {
                             this.setState('idle');
                         }
                     }, Math.random() * 2000 + 1000);
-                    
                 } else if (rand < 0.4) {
                     this.attack();
                 } else {
@@ -65,7 +64,6 @@ class Slime {
     attack() {
         if (!this.isDead && this.currentState !== 'hurt' && this.currentState !== 'dying') {
             this.setState('attacking');
-            
             setTimeout(() => {
                 if (!this.isDead) {
                     this.setState('idle');
@@ -78,7 +76,6 @@ class Slime {
         if (!this.isDead && this.currentState !== 'hurt' && this.currentState !== 'dying') {
             this.health -= 20;
             this.setState('hurt');
-            
             setTimeout(() => {
                 if (this.health <= 0) {
                     this.die();
@@ -92,7 +89,6 @@ class Slime {
     die() {
         this.isDead = true;
         this.setState('dying');
-        
         setTimeout(() => {
             this.element.remove();
         }, 500);
@@ -136,24 +132,49 @@ class Slime {
 }
 
 class SlimeManager {
-    constructor(numberOfSlimes) {
+    constructor() {
         this.slimes = [];
+        this.maxSlimes = 3;
         
-        for (let i = 0; i < numberOfSlimes; i++) {
-            const startX = Math.random() * (window.innerWidth - 100) + 50;
-            const startY = Math.random() * (window.innerHeight - 100) + 50;
-            this.slimes.push(new Slime(i, startX, startY));
+        const fixedSlime = new Slime(0, 200, 200);
+        this.slimes.push(fixedSlime);
+        this.createRandomSlimes();
+        this.startRandomSpawnSystem();
+    }
+
+    createRandomSlimes() {
+        const additionalSlimes = Math.floor(Math.random() * 3);
+        
+        for (let i = 0; i < additionalSlimes && this.slimes.length < this.maxSlimes; i++) {
+            const startX = Math.random() * (window.innerWidth * 0.4);
+            const startY = Math.random() * (window.innerHeight * 0.5);
+            this.slimes.push(new Slime(this.slimes.length, startX, startY));
         }
     }
 
+    startRandomSpawnSystem() {
+        setInterval(() => {
+            if (this.slimes.length < this.maxSlimes) {
+                if (Math.random() < 0.5) {
+                    const startX = Math.random() * (window.innerWidth * 0.4);
+                    const startY = Math.random() * (window.innerHeight * 0.5);
+                    this.slimes.push(new Slime(this.slimes.length, startX, startY));
+                }
+            }
+        }, Math.random() * 10000 + 10000);
+    }
+
     spawnSlime(x, y) {
-        const id = this.slimes.length;
-        const slime = new Slime(id, x, y);
-        this.slimes.push(slime);
-        return slime;
+        if (this.slimes.length < this.maxSlimes) {
+            const id = this.slimes.length;
+            const slime = new Slime(id, x, y);
+            this.slimes.push(slime);
+            return slime;
+        }
+        return null;
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    window.slimeManager = new SlimeManager(3);
+    window.slimeManager = new SlimeManager();
 });

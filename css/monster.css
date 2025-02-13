@@ -1,177 +1,149 @@
-.movement-area {
-    position: relative;
-    left: -20%;
-    bottom: 5%;
-    width: 100%;
-    height: 50%;
-    z-index: 100;
-    pointer-events: none;
-}
-
 .monster {
     position: absolute;
     width: 64px;
     height: 64px;
+    left: 20%;
+    bottom: 0;
     transform-origin: bottom center;
     image-rendering: pixelated;
-    z-index: 101;
+    z-index: 102;
     pointer-events: none;
     background-repeat: no-repeat;
 }
 
-/* Estados base do Slime */
 .monster.idle {
-    background-size: 320px 256px; /* 5 frames x 64px */
-    background-image: url("../img/monsters/slime_idle.png");
+    background-size: 384px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Idle_full.png");
 }
 
 .monster.walking {
-    background-size: 512px 256px; /* 8 frames x 64px */
-    background-image: url("../img/monsters/slime_walk.png");
+    background-size: 512px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Walk.png");
 }
 
-.monster.hurt {
-    background-size: 320px 256px; /* 5 frames x 64px */
-    background-image: url("../img/monsters/slime_hurt.png");
-}
 
-.monster.dying {
-    background-size: 320px 256px; /* 5 frames x 64px */
-    background-image: url("../img/monsters/slime_death.png");
-}
-
-.monster.attacking {
-    background-size: 384px 256px; /* 6 frames x 64px */
-    background-image: url("../img/monsters/slime_attack.png");
-}
-
-/* Idle Keyframes */
-@keyframes idleDown {
+@keyframes monsterIdleDown {
     from { background-position: 0px 0px; }
-    to { background-position: -320px 0px; }
+    to { background-position: -256px 0px; }
 }
 
-@keyframes idleLeft {
+@keyframes monsterIdleLeft {
     from { background-position: 0px -64px; }
-    to { background-position: -320px -64px; }
+    to { background-position: -256px -64px; }
 }
 
-@keyframes idleRight {
+@keyframes monsterIdleRight {
     from { background-position: 0px -128px; }
-    to { background-position: -320px -128px; }
+    to { background-position: -256px -128px; }
 }
 
-@keyframes idleUp {
+@keyframes monsterIdleUp {
     from { background-position: 0px -192px; }
-    to { background-position: -320px -192px; }
+    to { background-position: -256px -192px; }
 }
 
-/* Walking Keyframes */
-@keyframes walkDown {
+@keyframes monsterWalkDown {
     from { background-position: 0px 0px; }
     to { background-position: -512px 0px; }
 }
 
-@keyframes walkLeft {
+@keyframes monsterWalkLeft {
     from { background-position: 0px -64px; }
     to { background-position: -512px -64px; }
 }
 
-@keyframes walkRight {
+@keyframes monsterWalkRight {
     from { background-position: 0px -128px; }
     to { background-position: -512px -128px; }
 }
 
-@keyframes walkUp {
+@keyframes monsterWalkUp {
     from { background-position: 0px -192px; }
     to { background-position: -512px -192px; }
 }
 
-/* Hurt Keyframes */
-@keyframes hurtDown {
+@keyframes monsterHurtDown {
     from { background-position: 0px 0px; }
-    to { background-position: -320px 0px; }
+    to { background-position: -256px 0px; }
 }
 
-@keyframes hurtLeft {
+@keyframes monsterHurtLeft {
     from { background-position: 0px -64px; }
-    to { background-position: -320px -64px; }
+    to { background-position: -256px -64px; }
 }
 
-@keyframes hurtRight {
+@keyframes monsterHurtRight {
     from { background-position: 0px -128px; }
-    to { background-position: -320px -128px; }
+    to { background-position: -256px -128px; }
 }
 
-@keyframes hurtUp {
+@keyframes monsterHurtUp {
     from { background-position: 0px -192px; }
-    to { background-position: -320px -192px; }
+    to { background-position: -256px -192px; }
 }
 
-/* Attack Keyframes */
-@keyframes attackDown {
+@keyframes monsterAttackDown {
     from { background-position: 0px 0px; }
     to { background-position: -384px 0px; }
 }
 
-@keyframes attackLeft {
+@keyframes monsterAttackLeft {
     from { background-position: 0px -64px; }
     to { background-position: -384px -64px; }
 }
 
-@keyframes attackRight {
+@keyframes monsterAttackRight {
     from { background-position: 0px -128px; }
     to { background-position: -384px -128px; }
 }
 
-@keyframes attackUp {
+@keyframes monsterAttackUp {
     from { background-position: 0px -192px; }
     to { background-position: -384px -192px; }
 }
 
-/* Dying Keyframes */
-@keyframes dyingDown {
+@keyframes monsterDyingDown {
     from { background-position: 0px 0px; }
-    to { background-position: -320px 0px; }
+    to { background-position: -256px 0px; }
 }
 
-@keyframes dyingLeft {
+@keyframes monsterDyingLeft {
     from { background-position: 0px -64px; }
-    to { background-position: -320px -64px; }
+    to { background-position: -256px -64px; }
 }
 
-@keyframes dyingRight {
+@keyframes monsterDyingRight {
     from { background-position: 0px -128px; }
-    to { background-position: -320px -128px; }
+    to { background-position: -256px -128px; }
 }
 
-@keyframes dyingUp {
+@keyframes monsterDyingUp {
     from { background-position: 0px -192px; }
-    to { background-position: -320px -192px; }
+    to { background-position: -256px -192px; }
 }
 
-/* Aplicando as animações */
-.monster.idle-down { animation: idleDown 0.8s steps(5, jump-none) infinite; }
-.monster.idle-left { animation: idleLeft 0.8s steps(5, jump-none) infinite; }
-.monster.idle-right { animation: idleRight 0.8s steps(5, jump-none) infinite; }
-.monster.idle-up { animation: idleUp 0.8s steps(5, jump-none) infinite; }
 
-.monster.walk-down { animation: walkDown 0.8s steps(8, jump-none) infinite; }
-.monster.walk-left { animation: walkLeft 0.8s steps(8, jump-none) infinite; }
-.monster.walk-right { animation: walkRight 0.8s steps(8, jump-none) infinite; }
-.monster.walk-up { animation: walkUp 0.8s steps(8, jump-none) infinite; }
+.monster.idle-down { animation: monsterIdleDown 0.8s steps(5, jump-none) infinite; }
+.monster.idle-left { animation: monsterIdleLeft 0.8s steps(5, jump-none) infinite; }
+.monster.idle-right { animation: monsterIdleRight 0.8s steps(5, jump-none) infinite; }
+.monster.idle-up { animation: monsterIdleUp 0.8s steps(5, jump-none) infinite; }
 
-.monster.hurt-down { animation: hurtDown 0.4s steps(5, jump-none) forwards; }
-.monster.hurt-left { animation: hurtLeft 0.4s steps(5, jump-none) forwards; }
-.monster.hurt-right { animation: hurtRight 0.4s steps(5, jump-none) forwards; }
-.monster.hurt-up { animation: hurtUp 0.4s steps(5, jump-none) forwards; }
+.monster.walk-down { animation: monsterWalkDown 0.8s steps(8, jump-none) infinite; }
+.monster.walk-left { animation: monsterWalkLeft 0.8s steps(8, jump-none) infinite; }
+.monster.walk-right { animation: monsterWalkRight 0.8s steps(8, jump-none) infinite; }
+.monster.walk-up { animation: monsterWalkUp 0.8s steps(8, jump-none) infinite; }
 
-.monster.attack-down { animation: attackDown 0.5s steps(6, jump-none) forwards; }
-.monster.attack-left { animation: attackLeft 0.5s steps(6, jump-none) forwards; }
-.monster.attack-right { animation: attackRight 0.5s steps(6, jump-none) forwards; }
-.monster.attack-up { animation: attackUp 0.5s steps(6, jump-none) forwards; }
+.monster.hurt-down { animation: monsterHurtDown 0.4s steps(5, jump-none) infinite; }
+.monster.hurt-left { animation: monsterHurtLeft 0.4s steps(5, jump-none) infinite; }
+.monster.hurt-right { animation: monsterHurtRight 0.4s steps(5, jump-none) infinite; }
+.monster.hurt-up { animation: monsterHurtUp 0.4s steps(5, jump-none) infinite; }
 
-.monster.dying-down { animation: dyingDown 0.5s steps(5, jump-none) forwards; }
-.monster.dying-left { animation: dyingLeft 0.5s steps(5, jump-none) forwards; }
-.monster.dying-right { animation: dyingRight 0.5s steps(5, jump-none) forwards; }
-.monster.dying-up { animation: dyingUp 0.5s steps(5, jump-none) forwards; }
+.monster.attack-down { animation: monsterAttackDown 0.5s steps(6, jump-none) infinite; }
+.monster.attack-left { animation: monsterAttackLeft 0.5s steps(6, jump-none) infinite; }
+.monster.attack-right { animation: monsterAttackRight 0.5s steps(6, jump-none) infinite; }
+.monster.attack-up { animation: monsterAttackUp 0.5s steps(6, jump-none) infinite; }
+
+.monster.dying-down { animation: monsterDyingDown 0.5s steps(5, jump-none) infinite; }
+.monster.dying-left { animation: monsterDyingLeft 0.5s steps(5, jump-none) infinite; }
+.monster.dying-right { animation: monsterDyingRight 0.5s steps(5, jump-none) infinite; }
+.monster.dying-up { animation: monsterDyingUp 0.5s steps(5, jump-none) infinite; }
