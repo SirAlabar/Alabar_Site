@@ -25,6 +25,9 @@ class Character {
             E: false
         };
         
+        this.combatSystem = new CombatEntity(this.element, ENTITY_CONFIGS.PLAYER);
+        this.attackRange = ENTITY_CONFIGS.PLAYER.attackRange;
+        
         this.updateBounds();
         
         window.addEventListener('resize', () => {
@@ -48,6 +51,12 @@ class Character {
             this.element.classList.remove('idle', 'walking');
             this.element.classList.add('attacking');
             this.element.classList.add('attack-' + this.direction);
+    
+            window.monsterManager.monsters.forEach(monster => {
+                if (CollisionSystem.checkAttackRange(this.element, monster.element, this.attackRange)) {
+                    monster.takeDamage(this.combatSystem.calculateDamage());
+                }
+            });
 
             setTimeout(() => {
                 this.isAttacking = false;
@@ -158,5 +167,5 @@ class Character {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new Character();
+    window.gamePlayer = new Character();
 });

@@ -11,9 +11,25 @@
     background-repeat: no-repeat;
 }
 
+.monster::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    display: var(--shadow-display);
+}
+
 .monster.idle {
     background-size: 384px 256px;
     background-image: url("../img/monster/Slime1/Slime1_Idle_full.png");
+}
+
+.monster.idle::after {
+    background-size: 384px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Idle_full_Shadow.png");
 }
 
 .monster.walking {
@@ -21,25 +37,49 @@
     background-image: url("../img/monster/Slime1/Slime1_Walk.png");
 }
 
+.monster.walking::after {
+    background-size: 512px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Walk_Shadow.png");
+}
+
+.monster.hurt {
+    background-size: 384px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Hurt.png");
+}
+
+.monster.hurt::after {
+    background-size: 384px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Hurt_Shadow.png");
+}
+
+.monster.dying {
+    background-size: 384px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Death.png");
+}
+
+.monster.dying::after {
+    background-size: 384px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Death_Shadow.png");
+}
 
 @keyframes monsterIdleDown {
     from { background-position: 0px 0px; }
-    to { background-position: -256px 0px; }
+    to { background-position: -320px 0px; }
 }
 
 @keyframes monsterIdleLeft {
     from { background-position: 0px -64px; }
-    to { background-position: -256px -64px; }
+    to { background-position: -320px -64px; }
 }
 
 @keyframes monsterIdleRight {
     from { background-position: 0px -128px; }
-    to { background-position: -256px -128px; }
+    to { background-position: -320px -128px; }
 }
 
 @keyframes monsterIdleUp {
     from { background-position: 0px -192px; }
-    to { background-position: -256px -192px; }
+    to { background-position: -320px -192px; }
 }
 
 @keyframes monsterWalkDown {
@@ -123,10 +163,10 @@
 }
 
 
-.monster.idle-down { animation: monsterIdleDown 0.8s steps(5, jump-none) infinite; }
-.monster.idle-left { animation: monsterIdleLeft 0.8s steps(5, jump-none) infinite; }
-.monster.idle-right { animation: monsterIdleRight 0.8s steps(5, jump-none) infinite; }
-.monster.idle-up { animation: monsterIdleUp 0.8s steps(5, jump-none) infinite; }
+.monster.idle-down { animation: monsterIdleDown 0.8s steps(6, jump-none) infinite; }
+.monster.idle-left { animation: monsterIdleLeft 0.8s steps(6, jump-none) infinite; }
+.monster.idle-right { animation: monsterIdleRight 0.8s steps(6, jump-none) infinite; }
+.monster.idle-up { animation: monsterIdleUp 0.8s steps(6, jump-none) infinite; }
 
 .monster.walk-down { animation: monsterWalkDown 0.8s steps(8, jump-none) infinite; }
 .monster.walk-left { animation: monsterWalkLeft 0.8s steps(8, jump-none) infinite; }
@@ -138,10 +178,10 @@
 .monster.hurt-right { animation: monsterHurtRight 0.4s steps(5, jump-none) infinite; }
 .monster.hurt-up { animation: monsterHurtUp 0.4s steps(5, jump-none) infinite; }
 
-.monster.attack-down { animation: monsterAttackDown 0.5s steps(6, jump-none) infinite; }
-.monster.attack-left { animation: monsterAttackLeft 0.5s steps(6, jump-none) infinite; }
-.monster.attack-right { animation: monsterAttackRight 0.5s steps(6, jump-none) infinite; }
-.monster.attack-up { animation: monsterAttackUp 0.5s steps(6, jump-none) infinite; }
+.monster.attack-down { animation: monsterAttackDown 0.5s steps(10, jump-none) infinite; }
+.monster.attack-left { animation: monsterAttackLeft 0.5s steps(10, jump-none) infinite; }
+.monster.attack-right { animation: monsterAttackRight 0.5s steps(10, jump-none) infinite; }
+.monster.attack-up { animation: monsterAttackUp 0.5s steps(10, jump-none) infinite; }
 
 .monster.dying-down { animation: monsterDyingDown 0.5s steps(5, jump-none) infinite; }
 .monster.dying-left { animation: monsterDyingLeft 0.5s steps(5, jump-none) infinite; }
