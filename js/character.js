@@ -27,7 +27,16 @@ class Character {
         
         this.combatSystem = new CombatEntity(this.element, ENTITY_CONFIGS.PLAYER);
         this.attackRange = ENTITY_CONFIGS.PLAYER.attackRange;
-        
+        this.hitbox = CollisionSystem.getHitbox(this.element);
+
+        if (window.collisionSystem) {
+            window.collisionSystem.createMaskFromSprite(this.element, {
+                baseWidth: 128,
+                baseHeight: 128,
+                getScale: () => this.getResponsiveScale()
+            });
+        }
+
         this.updateBounds();
         
         window.addEventListener('resize', () => {
@@ -52,11 +61,11 @@ class Character {
             this.element.classList.add('attacking');
             this.element.classList.add('attack-' + this.direction);
     
-            window.monsterManager.monsters.forEach(monster => {
-                if (CollisionSystem.checkAttackRange(this.element, monster.element, this.attackRange)) {
-                    monster.takeDamage(this.combatSystem.calculateDamage());
-                }
-            });
+            // window.monsterManager.monsters.forEach(monster => {
+            //     if (CollisionSystem.checkAttackRange(this.element, monster.element, this.attackRange)) {
+            //         monster.takeDamage(this.combatSystem.calculateDamage());
+            //     }
+            // });
 
             setTimeout(() => {
                 this.isAttacking = false;
@@ -131,11 +140,46 @@ class Character {
         if (this.keys.ArrowUp || this.keys.w || this.keys.W) newY -= this.speed;
         if (this.keys.ArrowDown || this.keys.s || this.keys.S) newY += this.speed;
 
-        this.position.x = Math.max(this.bounds.left, Math.min(newX, this.bounds.right));
-        this.position.y = Math.max(this.bounds.top, Math.min(newY, this.bounds.bottom));
-
         this.scale = this.getResponsiveScale();
+
+        // this.position.x = Math.max(this.bounds.left, Math.min(newX, this.bounds.right));
+        // this.position.y = Math.max(this.bounds.top, Math.min(newY, this.bounds.bottom));
+
+        const tempHitbox = {
+            x: newX,
+            y: newY,
+            width: this.element.clientWidth * this.scale,
+            height: this.element.clientHeight * this.scale
+        };
+    let collided = false;
+                // Verifica se o slimeManager e slimes estão definidos
+        if (window.slimeManager && window.slimeManager.slimes) {
+            window.slimeManager.slimes.forEach(slime => {
+                const slimeScale = slime.scale;
+                const slimeRect = slime.element.getBoundingClientRect();
+                const slimeHitbox = {
+                    x: slimeRect.left,
+                    y: slimeRect.top,
+                    width: slimeRect.width * slimeScale,
+                    height: slimeRect.height * slimeScale
+                };
+
+                // Verifica a colisão entre o tempHitbox e a hitbox do slime
+                if (CollisionSystem.checkCollision(tempHitbox, slimeHitbox)) {
+                    collided = true;  // Colisão detectada
+                }
+            });
+        }
+
+        if (!collided) {
+            // Se não houve colisão, atualiza a posição do personagem
+            this.position.x = Math.max(this.bounds.left, Math.min(newX, this.bounds.right));
+            this.position.y = Math.max(this.bounds.top, Math.min(newY, this.bounds.bottom));
+        }
+
         this.element.style.transform = `translate(${this.position.x}px, ${this.position.y}px) scale(${this.scale})`;
+
+        CollisionSystem.debugHitbox(this.element);
     }
 
     setupControls() {

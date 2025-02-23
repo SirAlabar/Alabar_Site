@@ -16,7 +16,20 @@ class Slime {
         
         this.updateBounds();
         this.startBehavior();
+
+        if (window.collisionSystem) {
+            window.collisionSystem.createMaskFromSprite(this.element, {
+                baseWidth: 64,
+                baseHeight: 64,
+                getScale: () => this.scale
+            });
+        }
         
+        this.combatSystem = new CombatEntity(this.element, ENTITY_CONFIGS.SLIME);
+        this.attackRange = ENTITY_CONFIGS.SLIME.attackRange;
+        this.hitbox = CollisionSystem.getHitbox(this.element);
+
+
         window.addEventListener('resize', () => {
             this.updateBounds();
             this.adjustPosition();
@@ -121,7 +134,7 @@ class Slime {
             this.position.x = Math.max(this.bounds.left, Math.min(this.position.x, this.bounds.right));
             this.position.y = Math.max(this.bounds.top, Math.min(this.position.y, this.bounds.bottom));
         }
-
+        CollisionSystem.debugHitbox(this.element);
         this.element.style.transform = `translate(${this.position.x}px, ${this.position.y}px) scale(${this.scale})`;
     }
 
@@ -176,5 +189,5 @@ class SlimeManager {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    window.slimeManager = new SlimeManager();
+    window.monsterManager = new SlimeManager();
 });
