@@ -42,6 +42,16 @@
     background-image: url("../img/monster/Slime1/Slime1_Walk_Shadow.png");
 }
 
+.monster.attacking {
+    background-size: 512px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Attack_full.png");
+}
+
+.monster.attacking::after {
+    background-size: 512px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Attack_shadow.png");
+}
+
 .monster.hurt {
     background-size: 384px 256px;
     background-image: url("../img/monster/Slime1/Slime1_Hurt.png");
