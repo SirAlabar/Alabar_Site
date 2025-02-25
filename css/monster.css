@@ -188,10 +188,10 @@
 .monster.hurt-right { animation: monsterHurtRight 0.4s steps(5, jump-none) infinite; }
 .monster.hurt-up { animation: monsterHurtUp 0.4s steps(5, jump-none) infinite; }
 
-.monster.attack-down { animation: monsterAttackDown 0.5s steps(10, jump-none) infinite; }
-.monster.attack-left { animation: monsterAttackLeft 0.5s steps(10, jump-none) infinite; }
-.monster.attack-right { animation: monsterAttackRight 0.5s steps(10, jump-none) infinite; }
-.monster.attack-up { animation: monsterAttackUp 0.5s steps(10, jump-none) infinite; }
+.monster.attack-down { animation: monsterAttackDown 1.5s steps(10, jump-none) infinite; }
+.monster.attack-left { animation: monsterAttackLeft 1.5s steps(10, jump-none) infinite; }
+.monster.attack-right { animation: monsterAttackRight 1.5s steps(10, jump-none) infinite; }
+.monster.attack-up { animation: monsterAttackUp 1.5s steps(10, jump-none) infinite; }
 
 .monster.dying-down { animation: monsterDyingDown 0.5s steps(5, jump-none) infinite; }
 .monster.dying-left { animation: monsterDyingLeft 0.5s steps(5, jump-none) infinite; }
