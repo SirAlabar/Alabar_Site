@@ -29,7 +29,7 @@
 
 .monster.idle::after {
     background-size: 384px 256px;
-    background-image: url("../img/monster/Slime1/Slime1_Idle_full_Shadow.png");
+    background-image: url("../img/monster/Slime1/Slime1_Idle_shadow.png");
 }
 
 .monster.walking {
