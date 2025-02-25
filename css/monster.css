@@ -6,7 +6,7 @@
     bottom: 0;
     transform-origin: bottom center;
     image-rendering: pixelated;
-    z-index: 102;
+    z-index: 101;
     pointer-events: none;
     background-repeat: no-repeat;
 }
@@ -43,32 +43,32 @@
 }
 
 .monster.attacking {
-    background-size: 512px 256px;
+    background-size: 640px 256px;
     background-image: url("../img/monster/Slime1/Slime1_Attack_full.png");
 }
 
 .monster.attacking::after {
-    background-size: 512px 256px;
+    background-size: 640px 256px;
     background-image: url("../img/monster/Slime1/Slime1_Attack_shadow.png");
 }
 
 .monster.hurt {
-    background-size: 384px 256px;
+    background-size: 320px 256px;
     background-image: url("../img/monster/Slime1/Slime1_Hurt.png");
 }
 
 .monster.hurt::after {
-    background-size: 384px 256px;
+    background-size: 320px 256px;
     background-image: url("../img/monster/Slime1/Slime1_Hurt_Shadow.png");
 }
 
 .monster.dying {
-    background-size: 384px 256px;
-    background-image: url("../img/monster/Slime1/Slime1_Death.png");
+    background-size: 640px 256px;
+    background-image: url("../img/monster/Slime1/Slime1_Death_full.png");
 }
 
 .monster.dying::after {
-    background-size: 384px 256px;
+    background-size: 640px 256px;
     background-image: url("../img/monster/Slime1/Slime1_Death_Shadow.png");
 }
 
