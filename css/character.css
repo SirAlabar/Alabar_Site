@@ -69,15 +69,17 @@
 
 .walking::after {
     background-size: 768px 512px;
-    background-image: url("../img/player/Little_Leo_Shadow.png");
+    background-image: url("../img/player/Sword_Walk1_shadow.png");
 }
 
 .attacking {
+    background-size: 768px 512px;
     background-image: url("../img/player/Sword_attack_full.png");
 }
 
 .attacking::after {
-    background-image: url("../img/player/Sword_attack_full_Shadow.png");
+    background-size: 768px 512px;
+    background-image: url("../img/player/Sword_attack_full_shadow.png");
 }
 
 .health-bar {
