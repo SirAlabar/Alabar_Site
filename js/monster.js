@@ -13,6 +13,8 @@ class Slime {
         this.currentState = 'idle';
         this.health = 100;
         this.isDead = false;
+        this.health = ENTITY_CONFIGS.SLIME.maxHealth;
+        this.maxHealth = ENTITY_CONFIGS.SLIME.maxHealth;
         
         this.updateBounds();
         this.startBehavior();
@@ -34,6 +36,9 @@ class Slime {
             this.updateBounds();
             this.adjustPosition();
         });
+        
+        this.combatSystem.createHealthBar();
+        this.combatSystem.updateHealthBar();        
 
         this.gameLoop();
     }

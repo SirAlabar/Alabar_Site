@@ -134,22 +134,22 @@
 
 @keyframes monsterAttackDown {
     from { background-position: 0px 0px; }
-    to { background-position: -384px 0px; }
+    to { background-position: -576px 0px; }
 }
 
 @keyframes monsterAttackLeft {
     from { background-position: 0px -64px; }
-    to { background-position: -384px -64px; }
+    to { background-position: -576px -64px; }
 }
 
 @keyframes monsterAttackRight {
     from { background-position: 0px -128px; }
-    to { background-position: -384px -128px; }
+    to { background-position: -576px -128px; }
 }
 
 @keyframes monsterAttackUp {
     from { background-position: 0px -192px; }
-    to { background-position: -384px -192px; }
+    to { background-position: -576px -192px; }
 }
 
 @keyframes monsterDyingDown {

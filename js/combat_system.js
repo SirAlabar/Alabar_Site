@@ -44,14 +44,34 @@ class CombatEntity {
             const healthFill = document.createElement('div');
             healthFill.className = 'health-bar-fill';
             healthFill.style.width = '100%';
+
+            const isPlayer = this.element.id === 'character';
+            const entityWidth = this.element.clientWidth;
+        
+
+            const widthRatio = isPlayer ? 0.4 : 0.5;
+            healthBar.style.width = `${entityWidth * widthRatio}px`;
             
             healthBar.appendChild(healthFill);
             this.element.appendChild(healthBar);
             this.healthBar = healthBar;
             this.healthFill = healthFill;
         }
+        this.updateHealthBarPosition();
         this.healthBar.style.display = 'block';
         this.healthBarVisible = true;
+    }
+
+    updateHealthBarPosition() {
+        if (!this.healthBar) return;
+        const rect = this.element.getBoundingClientRect();
+        const entityHeight = rect.height;
+        const isPlayer = this.element.id === 'character';
+        if (isPlayer) {
+            this.healthBar.style.top = `${entityHeight * 0.1}px`;
+        } else {
+            this.healthBar.style.top = `${entityHeight * 0.15}px`;
+        }
     }
 
     updateHealthBar() {
@@ -59,7 +79,12 @@ class CombatEntity {
             this.createHealthBar();
         }
         const percentage = (this.health / this.maxHealth) * 100;
-        this.healthFill.style.width = `${percentage}%`;
+        if (percentage >= 100) {
+            this.healthBar.style.display = 'none';
+        } else {
+            this.healthBar.style.display = 'block';
+            this.healthFill.style.width = `${percentage}%`;
+        }
     }
 
     takeDamage(damage) {

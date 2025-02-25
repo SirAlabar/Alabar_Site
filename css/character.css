@@ -135,7 +135,13 @@
 }
 
 .hurting {
+    background-size: 768px 512px;
     background-image: url("../img/player/Sword_Hurt_full.png");
+}
+
+.hurting::after {
+    background-size: 768px 512px;
+    background-image: url("../img/player/Sword_Hurt1_shadow.png");
 }
 
 @media (max-width: 480px) {

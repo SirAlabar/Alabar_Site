@@ -7,6 +7,8 @@ class Character {
         this.isMoving = false;
         this.scale = 1;
         this.isAttacking = false;
+        this.health = ENTITY_CONFIGS.PLAYER.maxHealth;
+        this.maxHealth = ENTITY_CONFIGS.PLAYER.maxHealth;
         
         this.keys = {
             ArrowUp: false,
@@ -48,6 +50,8 @@ class Character {
         this.gameLoop();
         this.updatePosition();
         this.setInitialState();
+        this.combatSystem.createHealthBar();
+        this.combatSystem.updateHealthBar();     
     }
 
     setInitialState() {
