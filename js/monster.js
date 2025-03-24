@@ -139,7 +139,7 @@ class Slime {
             this.position.x = Math.max(this.bounds.left, Math.min(this.position.x, this.bounds.right));
             this.position.y = Math.max(this.bounds.top, Math.min(this.position.y, this.bounds.bottom));
         }
-        CollisionSystem.debugHitbox(this.element);
+        // CollisionSystem.debugHitbox(this.element);
         this.element.style.transform = `translate(${this.position.x}px, ${this.position.y}px) scale(${this.scale})`;
     }
 

@@ -183,7 +183,7 @@ class Character {
 
         this.element.style.transform = `translate(${this.position.x}px, ${this.position.y}px) scale(${this.scale})`;
 
-        CollisionSystem.debugHitbox(this.element);
+        // CollisionSystem.debugHitbox(this.element);
     }
 
     setupControls() {
